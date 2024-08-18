@@ -21,7 +21,7 @@ void init_bitmasks() {
 
 	// horizontal bitmasks
 	for (int i = 0; i < 6; i++) {
-		ull base = 15;
+		ull base = 0xF;
 		for (int j = 0; j < 4; j++) {
 			ull mask = base << j;
 			add(&bitmasks, &bitmasks_size, mask << (i * 7));
@@ -30,7 +30,7 @@ void init_bitmasks() {
 	
 	// vertical bitmasks
 	for (int i = 0; i < 7; i++) {
-		ull base = 2113665;
+		ull base = 0x204081;
 		for (int j = 0; j < 3; j++) {
 			ull mask = base << (j * 7);
 			add(&bitmasks, &bitmasks_size, mask << i);
@@ -39,7 +39,7 @@ void init_bitmasks() {
 	
 	// left-down diagonal bitmasks
 	for (int i = 0; i < 4; i++) {
-		ull base = 16843009;
+		ull base = 0x1010101;
 		for (int j = 0; j < 3; j++) {
 			ull mask = base << i;
 			add(&bitmasks, &bitmasks_size, mask << (j * 7));
@@ -49,7 +49,7 @@ void init_bitmasks() {
 	// right-down diagonal bitmasks
 	for (int i = 3; i < 7; i++) {
 		// this is technically not the right base but we shift it around so it's fine
-		ull base = 266305;
+		ull base = 0x41041;
 		for (int j = 0; j < 3; j++) {
 			ull mask = base << i;
 			add(&bitmasks, &bitmasks_size, mask << (j * 7));
@@ -57,7 +57,7 @@ void init_bitmasks() {
 	}
 
 	// whole vertical column bitmasks for adding
-	ull base = 34630287489;
+	ull base = 0x810204081;
 	for (int i = 0; i < 7; i++)
 		add(&vertical, &vertical_size, base << i);
 }
